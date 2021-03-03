@@ -191,3 +191,6 @@ C:\Users\Administrateur\source\repos\AuthUserApp\AuthUserApp\bin\Debug\net5.0\En
 C:\Users\Administrateur\source\repos\AuthUserApp\AuthUserApp\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Google.dll
 C:\Users\Administrateur\source\repos\AuthUserApp\AuthUserApp\obj\Debug\net5.0\Razor\Views\Role\Index.cshtml.g.cs
 C:\Users\Administrateur\source\repos\AuthUserApp\AuthUserApp\obj\Debug\net5.0\Razor\Views\Role\Create.cshtml.g.cs
+C:\Users\Administrateur\source\repos\AuthUserApp\AuthUserApp\obj\Debug\net5.0\Razor\Views\Role\EditRole.cshtml.g.cs
+C:\Users\Administrateur\source\repos\AuthUserApp\AuthUserApp\obj\Debug\net5.0\Razor\Views\Role\DeleteRole.cshtml.g.cs
+C:\Users\Administrateur\source\repos\AuthUserApp\AuthUserApp\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Facebook.dll

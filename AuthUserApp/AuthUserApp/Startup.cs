@@ -1,4 +1,5 @@
 using AuthUserApp.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,18 +31,28 @@ namespace AuthUserApp
             services.AddControllersWithViews();
             services.AddDbContext<AuthUserContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AuthUserAppContextConnection")));
 
-           
 
             services.AddAuthentication()
-        .AddGoogle(options =>
-        {
-            IConfigurationSection googleAuthNSection =
-                Configuration.GetSection("Authentication:Google");
+                            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+                            .AddFacebook(facebookOptions =>
+                            {
+                                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                                facebookOptions.AccessDeniedPath = "/AccessDeniedPathInfo";
+                            })
+                            .AddGoogle(googleOptions =>
+                            {
+                                IConfigurationSection googleAuthNSection =
+                        Configuration.GetSection("Authentication:Google");
 
-            options.ClientId = googleAuthNSection["ClientId"];
-            options.ClientSecret = googleAuthNSection["ClientSecret"];
-        });
-         
+                                googleOptions.ClientId = googleAuthNSection["ClientId"];
+                                googleOptions.ClientSecret = googleAuthNSection["ClientSecret"];
+
+                    //googleOptions.CallbackPath = new PathString("/signin-google");
+                });
+
+
+
 
 
         }

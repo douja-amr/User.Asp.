@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "bzoNol7JhIZO7hRzNR0o0L2788fiQVMS6KW6rJvDFlnPHVr9tK8Hm6avRxKRFKUq+q+5cNF9+5q6JXofgJIx9g==",
+  "dgSpecHash": "imkvYrW4RC5UVg3AN7prQ7nQAc8tBC9F6tRWQD2hP/0KX/o1D+nPOzXO0Bv/NUogfEyPNztzyI5pViUKwdIq+A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrateur\\source\\repos\\AuthUserApp\\AuthUserApp\\AuthUserApp.csproj",
+  "projectFilePath": "C:\\Users\\Administrateur\\Desktop\\User.Asp\\AuthUserApp\\AuthUserApp\\AuthUserApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrateur\\.nuget\\packages\\enums.net\\4.0.0\\enums.net.4.0.0.nupkg.sha512",
     "C:\\Users\\Administrateur\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Administrateur\\.nuget\\packages\\microsoft.aspnetcore.authentication.facebook\\5.0.3\\microsoft.aspnetcore.authentication.facebook.5.0.3.nupkg.sha512",
     "C:\\Users\\Administrateur\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\5.0.3\\microsoft.aspnetcore.authentication.google.5.0.3.nupkg.sha512",
     "C:\\Users\\Administrateur\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.3\\microsoft.aspnetcore.cryptography.internal.5.0.3.nupkg.sha512",
     "C:\\Users\\Administrateur\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.3\\microsoft.aspnetcore.cryptography.keyderivation.5.0.3.nupkg.sha512",

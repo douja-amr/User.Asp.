@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using AuthUserApp.Models;
 
 #nullable disable
 
@@ -149,5 +150,7 @@ namespace AuthUserApp.Models
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public DbSet<AuthUserApp.Models.DeleteRole> DeleteRole { get; set; }
     }
 }

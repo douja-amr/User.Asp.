@@ -5,25 +5,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using AuthUserApp.Models;
 
 namespace AuthUserApp.Controllers
 {
     public class RoleController : Controller
     {
-        /*public IActionResult Index()
-        {
-            return View();
-        }*/
+
+        /// Injecting Role Manager
+
         RoleManager<IdentityRole> roleManager;
 
-        /// 
-        /// Injecting Role Manager
-        /// 
-        /// 
+       
         public RoleController(RoleManager<IdentityRole> roleManager)
         {
             this.roleManager = roleManager;
         }
+
+
+
+        // List of Roles 
 
         [Authorize(Policy = "writepolicy")]
         public IActionResult Index()
@@ -32,6 +33,9 @@ namespace AuthUserApp.Controllers
             return View(roles);
         }
 
+
+
+        // Create role
        
         public IActionResult Create()
         {
@@ -46,5 +50,139 @@ namespace AuthUserApp.Controllers
         }
 
 
+
+
+        // Get the role name based in it's Id
+
+        [HttpGet]
+        public async Task<IActionResult> EditRole(string id)
+        {
+            
+            var role = await roleManager.FindByIdAsync(id);
+
+            if (role == null)
+            {
+                ViewBag.ErrorMessage = $"Role with Id = {id} cannot be found";
+                return View("NotFound");
+            }
+
+            var model = new EditRole
+            {
+                Id = role.Id,
+                RoleName = role.Name
+            };
+
+           
+
+            return View(model);
+        }
+
+
+        // Update the role name
+
+        [HttpPost]
+        public async Task<IActionResult> EditRole(EditRole model)
+        {
+            var role = await roleManager.FindByIdAsync(model.Id);
+
+            if (role == null)
+            {
+                ViewBag.ErrorMessage = $"Role with Id = {model.Id} cannot be found";
+                return View("NotFound");
+            }
+            else
+            {
+                role.Name = model.RoleName;
+
+                
+                var result = await roleManager.UpdateAsync(role);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("index");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                return View(model);
+            }
+        }
+
+
+
+
+        // Get Delete view by role Id
+
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteRole(string id)
+        {
+            
+            var role = await roleManager.FindByIdAsync(id);
+
+            if (role == null)
+            {
+                ViewBag.ErrorMessage = $"Role with Id = {id} cannot be found";
+                return View("NotFound");
+            }
+
+            var model = new DeleteRole
+            {
+                Id = role.Id,
+                RoleName = role.Name
+
+            };
+
+
+
+            return View(model);
+        }
+
+
+         // Delete Role 
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteRole(DeleteRole model)
+        {
+          
+                
+
+            var role = await roleManager.FindByIdAsync(model.Id);
+
+            if (role == null)
+            {
+                ViewBag.ErrorMessage = $"Role with Id = {model.Id} cannot be found";
+                return View("NotFound");
+            }
+            else
+            {
+                role.Name = model.RoleName;
+
+           
+                var result = await roleManager.DeleteAsync(role);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("index");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                return View(model);
+            }
+        }
     }
+
+
+
+
+
+
 }
+

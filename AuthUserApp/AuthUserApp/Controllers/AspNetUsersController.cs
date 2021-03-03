@@ -22,7 +22,7 @@ namespace AuthUserApp.Controllers
         }
         
         // GET: AspNetUsers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index([Bind("Id,FirstName,LastName,Cin,Adresse,UserName,NormalizedUserName,Email")] AspNetUser aspNetUser)
         {
             var list = await _context.AspNetUsers.ToListAsync();
             return View(list);
@@ -57,7 +57,7 @@ namespace AuthUserApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Cin,Adresse,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Cin,Adresse,UserName,NormalizedUserName,Email")] AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +68,7 @@ namespace AuthUserApp.Controllers
             return View(aspNetUser);
         }
 
-        // GET: AspNetUsers/Edit/5
+        // GET: AspNetUsers/Edit/
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -84,12 +84,12 @@ namespace AuthUserApp.Controllers
             return View(aspNetUser);
         }
 
-        // POST: AspNetUsers/Edit/5
+        // POST: AspNetUsers/Edit/
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,FirstName,LastName,Cin,Adresse,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,FirstName,LastName,Cin,Adresse,UserName,Email")] AspNetUser aspNetUser)
         {
             if (id != aspNetUser.Id)
             {
